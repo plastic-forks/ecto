@@ -522,6 +522,8 @@ defmodule Ecto.Schema do
     schema(__CALLER__, nil, false, :binary_id, block)
   end
 
+  defoverridable embedded_schema: 1
+
   @doc """
   Defines a schema struct with a source name and field definitions.
 
@@ -655,6 +657,8 @@ defmodule Ecto.Schema do
     end
   end
 
+  defoverridable schema: 2
+
   ## API
 
   @doc """
@@ -722,6 +726,8 @@ defmodule Ecto.Schema do
       Ecto.Schema.__field__(__MODULE__, unquote(name), unquote(type), unquote(opts))
     end
   end
+
+  defoverridable field: 1, field: 2, field: 3
 
   @doc """
   Generates `:inserted_at` and `:updated_at` timestamp fields.
@@ -993,6 +999,8 @@ defmodule Ecto.Schema do
     end
   end
 
+  defoverridable has_many: 2, has_many: 3
+
   @doc ~S"""
   Indicates a one-to-one association with another schema.
 
@@ -1063,6 +1071,8 @@ defmodule Ecto.Schema do
       Ecto.Schema.__has_one__(__MODULE__, unquote(name), unquote(queryable), unquote(opts))
     end
   end
+
+  defoverridable has_one: 2, has_one: 3
 
   @doc ~S"""
   Indicates a one-to-one or many-to-one association with another schema.
@@ -1268,6 +1278,8 @@ defmodule Ecto.Schema do
       Ecto.Schema.__belongs_to__(__MODULE__, unquote(name), unquote(queryable), unquote(opts))
     end
   end
+
+  defoverridable belongs_to: 2, belongs_to: 3
 
   @doc ~S"""
   Indicates a many-to-many association with another schema.
@@ -1523,6 +1535,8 @@ defmodule Ecto.Schema do
     end
   end
 
+  defoverridable many_to_many: 2, many_to_many: 3
+
   ## Embeds
 
   @doc ~S"""
@@ -1679,6 +1693,8 @@ defmodule Ecto.Schema do
       Ecto.Schema.__embeds_one__(__MODULE__, unquote(name), schema, opts)
     end
   end
+
+  defoverridable embeds_one: 2, embeds_one: 3, embeds_one: 4
 
   @doc ~S"""
   Indicates an embedding of many schemas.
@@ -1846,6 +1862,8 @@ defmodule Ecto.Schema do
       Ecto.Schema.__embeds_many__(__MODULE__, unquote(name), schema, opts)
     end
   end
+
+  defoverridable embeds_many: 2, embeds_many: 3, embeds_many: 4
 
   # Internal function for integrating associations into schemas.
   #
